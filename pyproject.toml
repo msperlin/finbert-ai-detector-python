@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "finbert-ai-detector"
+version = "0.1.0"
+description = "A Python package to detect AI-generated text in financial documents using the msperlin/finbert-ai-detector model."
+readme = "README.md"
+authors = [
+    { name = "Marcelo Perlin", email = "marcelo.perlin@ufrgs.br" },
+]
+license = "MIT"
+requires-python = ">=3.8"
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.0.0",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+]
+
+[project.urls]
+"Homepage" = "https://huggingface.co/msperlin/finbert-ai-detector"
+"Bug Tracker" = "https://huggingface.co/msperlin/finbert-ai-detector/discussions"
+"Research Paper" = "https://ssrn.com/abstract=6108946"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/finbert_ai_detector"]
