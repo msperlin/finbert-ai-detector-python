@@ -3,6 +3,7 @@ from typing import List, Union, Dict, Any
 
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from finbert_ai_detector.cleaning_text import clean_financial_text
 
 logger = logging.getLogger(__name__)
 
@@ -52,7 +53,7 @@ class FinbertAIDetector:
             return "mps"
         return "cpu"
 
-    def predict(self, text: str) -> Dict[str, Any]:
+    def predict(self, text: str, clean_text = False) -> Dict[str, Any]:
         """
         Predict whether a single text is AI-generated.
 
@@ -66,6 +67,9 @@ class FinbertAIDetector:
                 - human_probability (float): The probability the text is human-written
                 - label (str): Either "AI-generated" or "Human-written" based on majority probability
         """
+        if clean_text:
+            text = clean_financial_text(text)
+
         res = self.predict_batch([text])
         return res[0]
 
